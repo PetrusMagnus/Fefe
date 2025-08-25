@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | Loja da Fefe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff5f5;
+            color: #8a3a6a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff9dc9, #ff70a8);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo span {
+            font-size: 28px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffebf3;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin: 40px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #d44d80;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9dc9, #ff70a8);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            background-color: white;
+            border: 2px solid #ff9dc9;
+            color: #d44d80;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: #ff9dc9;
+            color: white;
+        }
+
+        /* Products Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff70a8;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #ffebf3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #d44d80;
+        }
+
+        .product p {
+            margin-bottom: 15px;
+            color: #8a3a6a;
+        }
+
+        .product-price {
+            font-weight: 600;
+            font-size: 20px;
+            color: #ff70a8;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .product-actions button {
+            background-color: #ff9dc9;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .product-actions button:hover {
+            background-color: #ff70a8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ff9dc9;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffebf3;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span>🌸</span>
+                <h1>Loja da Fefe</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html" class="active">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="container">
+        <h2 class="page-title">Nossos Produtos 🛍️</h2>
+        
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-btn active">Tudo 🌸</button>
+            <button class="category-btn">Roupas 👗</button>
+            <button class="category-btn">Acessórios 🎀</button>
+            <button class="category-btn">Calçados 👟</button>
+            <button class="category-btn">Bonecas 🧸</button>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <div class="product-badge">Novo</div>
+                <div class="product-img">👗</div>
+                <div class="product-content">
+                    <h3>Vestido Encantado</h3>
+                    <p>Vestido florido perfeito para ocasiões especiais.</p>
+                    <span class="product-price">R$ 129,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <div class="product-badge">Oferta</div>
+                <div class="product-img">🎀</div>
+                <div class="product-content">
+                    <h3>Kit de Acessórios</h3>
+                    <p>Conjunto de hair clips e tiara com detalhes brilhantes.</p>
+                    <span class="product-price">R$ 49,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <div class="product-img">👜</div>
+                <div class="product-content">
+                    <h3>Bolsa Estrelinha</h3>
+                    <p>Bolsa prática e fashion com estampa de estrelas.</p>
+                    <span class="product-price">R$ 89,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product">
+                <div class="product-badge">Mais Vendido</div>
+                <div class="product-img">👒</div>
+                <div class="product-content">
+                    <h3>Chapéu de Verão</h3>
+                    <p>Proteja-se do sol com estilo e elegância.</p>
+                    <span class="product-price">R$ 59,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product">
+                <div class="product-img">👚</div>
+                <div class="product-content">
+                    <h3>Conjunto Infantil</h3>
+                    <p>Conjunto lindo e confortável para o dia a dia.</p>
+                    <span class="product-price">R$ 99,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product">
+                <div class="product-badge">Promoção</div>
+                <div class="product-img">🎠</div>
+                <div class="product-content">
+                    <h3>Kit Unicórnio</h3>
+                    <p>Mochila, lancheira e estojo temáticos de unicórnio.</p>
+                    <span class="product-price">R$ 149,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product">
+                <div class="product-img">👟</div>
+                <div class="product-content">
+                    <h3>Tênis Brilhante</h3>
+                    <p>Tênis comfortable com detalhes que brilham no escuro.</p>
+                    <span class="product-price">R$ 119,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product">
+                <div class="product-badge">Novo</div>
+                <div class="product-img">🧦</div>
+                <div class="product-content">
+                    <h3>Meias Decoradas</h3>
+                    <p>Conjunto de meias com renda e aplicações fofas.</p>
+                    <span class="product-price">R$ 29,90</span>
+                    <div class="product-actions">
+                        <button>Detalhes</button>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Loja da Fefe</h3>
+                    <p>Transformando dias comuns em momentos especiais!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Nos acompanhe</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/556195045884" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: fernandandrade81@hotmail.com</p>
+                    <p>Telefone: +55 61 9504-5884</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Loja da Fefe - Todos os direitos reservados 💖</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para filtro de categorias
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('.category-btn.active').classList.remove('active');
+                this.classList.add('active');
+                // Aqui iria a lógica para filtrar os produtos
+            });
+        });
+
+        // Adiciona classe ativa ao link do menu correspondente à página atual
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const menuLinks = document.querySelectorAll('nav a');
+            
+            menuLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
