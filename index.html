@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loja da Fefe - Produtos encantadores e exclusivos para meninas que amam se divertir com estilo!">
     <title>Loja da Fefe | Produtos Encantados para Meninas</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset e configurações gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #ff70a8;
+            --secondary-color: #ff9dc9;
+            --accent-color: #d44d80;
+            --text-color: #8a3a6a;
+            --light-bg: #fff5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #fff5f5;
-            color: #8a3a6a;
+            background-color: var(--light-bg);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
@@ -28,9 +41,12 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #ff9dc9, #ff70a8);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
@@ -42,12 +58,13 @@
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
         .logo h1 {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
-            color: white;
+            color: var(--white);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -66,11 +83,11 @@
         }
 
         nav ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: var(--transition);
             padding: 5px 10px;
             border-radius: 15px;
         }
@@ -79,6 +96,15 @@
             background-color: rgba(255, 255, 255, 0.2);
             color: #ffebf3;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -111,7 +137,7 @@
         .hero h2 {
             font-family: 'Playfair Display', serif;
             font-size: 48px;
-            color: #d44d80;
+            color: var(--accent-color);
             margin-bottom: 20px;
         }
 
@@ -119,20 +145,22 @@
             font-size: 20px;
             max-width: 700px;
             margin: 0 auto 30px;
-            color: #8a3a6a;
+            color: var(--text-color);
         }
 
         .btn {
             display: inline-block;
-            background-color: #ff70a8;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -147,7 +175,7 @@
             margin-bottom: 40px;
             font-family: 'Playfair Display', serif;
             font-size: 36px;
-            color: #d44d80;
+            color: var(--accent-color);
             position: relative;
             display: inline-block;
             left: 50%;
@@ -159,7 +187,7 @@
             display: block;
             width: 70%;
             height: 4px;
-            background: linear-gradient(to right, #ff9dc9, #ff70a8);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
             margin: 10px auto 0;
             border-radius: 2px;
         }
@@ -172,11 +200,11 @@
         }
 
         .product {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: var(--transition);
             position: relative;
         }
 
@@ -188,8 +216,8 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #ff70a8;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 12px;
@@ -215,12 +243,12 @@
             left: 0;
             right: 0;
             background: rgba(255, 112, 168, 0.8);
-            color: white;
+            color: var(--white);
             font-size: 12px;
             padding: 5px;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: var(--transition);
         }
 
         .product-img:hover::after {
@@ -234,18 +262,39 @@
         .product h3 {
             font-size: 22px;
             margin-bottom: 10px;
-            color: #d44d80;
+            color: var(--accent-color);
         }
 
         .product p {
             margin-bottom: 15px;
-            color: #8a3a6a;
+            color: var(--text-color);
         }
 
         .product-price {
             font-weight: 600;
             font-size: 20px;
-            color: #ff70a8;
+            color: var(--primary-color);
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .product-actions button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .product-actions button:hover {
+            background-color: var(--primary-color);
         }
 
         /* About Section */
@@ -287,7 +336,7 @@
         .about-text h2 {
             font-family: 'Playfair Display', serif;
             font-size: 36px;
-            color: #d44d80;
+            color: var(--accent-color);
             margin-bottom: 20px;
         }
 
@@ -295,7 +344,7 @@
             flex: 1;
             text-align: center;
             font-size: 120px;
-            color: #ff70a8;
+            color: var(--primary-color);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -304,10 +353,56 @@
             50% { transform: translateY(-15px); }
         }
 
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, #ffc2dd, var(--secondary-color));
+            padding: 40px 0;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .newsletter-form button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #ff4d94;
+        }
+
         /* Footer */
         footer {
-            background-color: #ff9dc9;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--white);
             padding: 40px 0;
             text-align: center;
         }
@@ -331,10 +426,10 @@
         }
 
         .social-icons a {
-            color: white;
+            color: var(--white);
             font-size: 24px;
             margin: 0 10px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .social-icons a:hover {
@@ -348,50 +443,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, #ffc2dd, #ff9dc9);
-            padding: 40px 0;
-            text-align: center;
-            margin: 40px 0;
-            border-radius: 15px;
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
         }
 
-        .newsletter h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #8a3a6a;
-        }
-
-        .newsletter-form {
-            display: flex;
-            justify-content: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        .newsletter-form button {
-            background: #ff70a8;
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: #ff4d94;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Responsividade */
@@ -437,6 +501,25 @@
                 border-radius: 30px;
                 padding: 12px;
             }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
@@ -444,12 +527,15 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <span>🌸</span>
                 <h1>Loja da Fefe</h1>
-            </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <ul>
+                <ul id="mainMenu">
                     <li><a href="index.html" class="active">Início</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
@@ -480,6 +566,10 @@
                     <h3>Vestido Encantado</h3>
                     <p>Vestido florido perfeito para ocasiões especiais.</p>
                     <span class="product-price">R$ 129,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
 
@@ -491,6 +581,10 @@
                     <h3>Kit de Acessórios</h3>
                     <p>Conjunto de hair clips e tiara com detalhes brilhantes.</p>
                     <span class="product-price">R$ 49,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
 
@@ -501,6 +595,10 @@
                     <h3>Bolsa Estrelinha</h3>
                     <p>Bolsa prática e fashion com estampa de estrelas.</p>
                     <span class="product-price">R$ 89,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
 
@@ -510,8 +608,12 @@
                 <div class="product-img">👒</div>
                 <div class="product-content">
                     <h3>Chapéu de Verão</h3>
-                    <p>Proteja-se do sol com estilo and elegância.</p>
+                    <p>Proteja-se do sol com estilo e elegância.</p>
                     <span class="product-price">R$ 59,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
             
@@ -522,6 +624,10 @@
                     <h3>Conjunto Infantil</h3>
                     <p>Conjunto lindo e confortável para o dia a dia.</p>
                     <span class="product-price">R$ 99,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
             
@@ -533,6 +639,10 @@
                     <h3>Kit Unicórnio</h3>
                     <p>Mochila, lancheira e estojo temáticos de unicórnio.</p>
                     <span class="product-price">R$ 149,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
             
@@ -541,8 +651,12 @@
                 <div class="product-img">👟</div>
                 <div class="product-content">
                     <h3>Tênis Brilhante</h3>
-                    <p>Tênis comfortable com detalhes que brilham no escuro.</p>
+                    <p>Tênis confortável com detalhes que brilham no escuro.</p>
                     <span class="product-price">R$ 119,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
             
@@ -554,6 +668,10 @@
                     <h3>Meias Decoradas</h3>
                     <p>Conjunto de meias com renda e aplicações fofas.</p>
                     <span class="product-price">R$ 29,90</span>
+                    <div class="product-actions">
+                        <button class="btn-details">Detalhes</button>
+                        <button class="btn-cart">Adicionar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -580,8 +698,8 @@
     <div class="container">
         <div class="newsletter">
             <h3>Inscreva-se para novidades ✨</h3>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Seu melhor email" required>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Seu melhor e-mail" required>
                 <button type="submit">Inscrever</button>
             </form>
         </div>
@@ -598,13 +716,13 @@
                 <div class="footer-section">
                     <h3>Nos acompanhe</h3>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/556195045884" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/556195045884" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
-                    <p>Email: fernandandrade81@hotmail.com</p>
+                    <p>E-mail: fernandandrade81@hotmail.com</p>
                     <p>Telefone: +55 61 9504-5884</p>
                 </div>
             </div>
@@ -625,6 +743,62 @@
                 if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
                     link.classList.add('active');
                 }
+            });
+
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainMenu = document.getElementById('mainMenu');
+            
+            if (mobileMenuBtn && mainMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainMenu.classList.toggle('show');
+                });
+            }
+
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Simula o envio
+                    submitBtn.innerHTML = '<div class="loading"></div>';
+                    
+                    setTimeout(function() {
+                        submitBtn.textContent = 'Inscrito!';
+                        submitBtn.style.backgroundColor = '#4CAF50';
+                        
+                        setTimeout(function() {
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.backgroundColor = '';
+                            newsletterForm.reset();
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+
+            // Produtos - adicionar ao carrinho
+            const addToCartButtons = document.querySelectorAll('.btn-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product');
+                    const productName = product.querySelector('h3').textContent;
+                    const productPrice = product.querySelector('.product-price').textContent;
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Adicionado!';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                    
+                    console.log(`Produto adicionado: ${productName} - ${productPrice}`);
+                });
             });
         });
     </script>
