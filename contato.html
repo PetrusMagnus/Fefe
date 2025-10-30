@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato com a Loja da Fefe - Estamos aqui para ajudar!">
     <title>Contato | Loja da Fefe</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset e configurações gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #ff70a8;
+            --secondary-color: #ff9dc9;
+            --accent-color: #d44d80;
+            --text-color: #8a3a6a;
+            --light-bg: #fff5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #fff5f5;
-            color: #8a3a6a;
+            background-color: var(--light-bg);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
@@ -28,9 +41,12 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #ff9dc9, #ff70a8);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
@@ -42,12 +58,13 @@
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
         .logo h1 {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
-            color: white;
+            color: var(--white);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -66,11 +83,11 @@
         }
 
         nav ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: var(--transition);
             padding: 5px 10px;
             border-radius: 15px;
         }
@@ -81,68 +98,200 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
 
-        /* Page Title */
-        .page-title {
-            text-align: center;
-            margin: 40px 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            color: #d44d80;
-            position: relative;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
         }
 
-        .page-title::after {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 157, 201, 0.7), rgba(255, 112, 168, 0.7)), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ffebf3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d94;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
             content: "";
             display: block;
-            width: 100px;
+            width: 70%;
             height: 4px;
-            background: linear-gradient(to right, #ff9dc9, #ff70a8);
-            margin: 15px auto;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            margin: 10px auto 0;
             border-radius: 2px;
         }
 
-        /* Contact Content */
-        .contact-content {
-            display: flex;
-            gap: 40px;
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             margin-bottom: 60px;
         }
 
         .contact-info {
-            flex: 1;
+            background: linear-gradient(to right, #ffebf3, #ffc2dd);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+
+        .contact-details p {
+            margin-bottom: 0;
+        }
+
+        .social-contact {
+            margin-top: 30px;
+        }
+
+        .social-contact h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
         }
 
         .contact-form {
-            flex: 1;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
         }
 
-        .info-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-card h3 {
+        .contact-form h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #d44d80;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .info-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: #ff70a8;
-            width: 30px;
-            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--accent-color);
         }
 
         .form-group {
@@ -153,58 +302,138 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
+            color: var(--text-color);
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #ffc2dd;
+            border: 1px solid #ffc2dd;
             border-radius: 10px;
             font-family: 'Quicksand', sans-serif;
+            transition: var(--transition);
         }
 
-        .form-group textarea {
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 112, 168, 0.2);
+        }
+
+        textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
 
         .submit-btn {
-            background-color: #ff70a8;
-            color: white;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
             border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
+            border-radius: 10px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: var(--transition);
         }
 
         .submit-btn:hover {
-            background-color: #ff4d94;
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Map */
-        .map {
-            margin: 40px 0;
+        /* FAQ Section */
+        .faq-section {
+            background: linear-gradient(to right, #ffebf3, #ffc2dd);
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #ffebf3;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: var(--transition);
+        }
+
+        .faq-toggle.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-bottom: 60px;
+        }
+
+        .map-container {
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            height: 400px;
         }
 
-        .map iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
+        .map-placeholder {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .map-placeholder i {
+            font-size: 60px;
+            margin-bottom: 20px;
         }
 
         /* Footer */
         footer {
-            background-color: #ff9dc9;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--white);
             padding: 40px 0;
             text-align: center;
-            margin-top: 60px;
         }
 
         .footer-content {
@@ -226,10 +455,10 @@
         }
 
         .social-icons a {
-            color: white;
+            color: var(--white);
             font-size: 24px;
             margin: 0 10px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .social-icons a:hover {
@@ -241,6 +470,21 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Responsividade */
@@ -260,8 +504,40 @@
                 margin: 5px 10px;
             }
 
-            .contact-content {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
                 flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-info, .contact-form {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -270,12 +546,15 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <span>🌸</span>
                 <h1>Loja da Fefe</h1>
-            </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <ul>
+                <ul id="mainMenu">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
@@ -285,96 +564,194 @@
         </div>
     </header>
 
-    <!-- Page Title -->
-    <div class="container">
-        <h2 class="page-title">Fale Conosco 💌</h2>
-        
-        <!-- Contact Content -->
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="info-card">
-                    <h3>Informações de Contato</h3>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Fale Conosco! 💌</h2>
+            <p>Estamos aqui para tirar suas dúvidas, ouvir suas sugestões e ajudar no que for preciso!</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato 📞</h2>
+            
+            <div class="contact-container">
+                <!-- Informações de Contato -->
+                <div class="contact-info">
+                    <h3>Nossos Canais</h3>
                     
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div>
-                            <strong>Telefone/WhatsApp</strong>
-                            <p>+55 61 9504-5884</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Endereço</h4>
+                            <p>Shopping da Menina Feliz, Loja 23<br>Brasília - DF, 70000-000</p>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div>
-                            <strong>Email</strong>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telefone</h4>
+                            <p>+55 (61) 9504-5884</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>E-mail</h4>
                             <p>fernandandrade81@hotmail.com</p>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">📱</div>
-                        <div>
-                            <strong>Instagram</strong>
-                            <p>@fernanda_andrade81</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sábado: 9h às 18h<br>Domingo: 10h às 14h</p>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">🕒</div>
-                        <div>
-                            <strong>Horário de Atendimento</strong>
-                            <p>Segunda a Sábado: 9h às 18h</p>
+                    <div class="social-contact">
+                        <h4>Redes Sociais</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/556195045884" target="_blank" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="info-card">
-                    <h3>Por que nos escolher?</h3>
-                    <ul>
-                        <li>Produtos de alta qualidade</li>
-                        <li>Atendimento personalizado</li>
-                        <li>Entregas rápidas</li>
-                        <li>Trocas facilitadas</li>
-                        <li>Preços justos</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <div class="info-card">
-                    <h3>Envie uma Mensagem</h3>
-                    <form>
+                <!-- Formulário de Contato -->
+                <div class="contact-form">
+                    <h3>Envie sua Mensagem</h3>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Seu Nome</label>
-                            <input type="text" id="name" placeholder="Digite seu nome">
+                            <input type="text" id="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Seu Email</label>
-                            <input type="email" id="email" placeholder="Digite seu email">
+                            <label for="email">Seu E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Assunto</label>
-                            <input type="text" id="subject" placeholder="Assunto da mensagem">
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option value="duvida">Dúvida sobre produto</option>
+                                <option value="pedido">Status do pedido</option>
+                                <option value="troca">Troca ou devolução</option>
+                                <option value="sugestao">Sugestão</option>
+                                <option value="outro">Outro</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Sua Mensagem</label>
-                            <textarea id="message" placeholder="Digite sua mensagem"></textarea>
+                            <textarea id="message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Enviar Mensagem ✨</button>
+                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
                     </form>
                 </div>
             </div>
         </div>
-        
-        <!-- Map -->
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15355.534435885621!2d-48.0558347!3d-15.832355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDQ5JzU2LjUiUyA0OMKwMDMnMjEuMCJX!5e0!3m2!1spt-BR!2sbr!4v1622652537221!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes ❓</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como faço para trocar um produto?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Você tem até 30 dias para solicitar a troca de produtos. Basta entrar em contato conosco pelo WhatsApp, e-mail ou telefone informando o motivo da troca. Enviamos uma etiqueta de postagem e o produto novo é enviado após recebermos o item devolvido.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual o prazo de entrega?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O prazo de entrega varia de 3 a 10 dias úteis, dependendo da sua localização. Para Brasília e entorno, o prazo é de 2 a 5 dias úteis. Você receberá um código de rastreio assim que seu pedido for despachado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Vocês fazem entregas para todo o Brasil?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Entregamos para todo o Brasil através dos Correios e transportadoras parceiras. O frete é calculado automaticamente no carrinho de compras de acordo com o CEP informado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quais são as formas de pagamento?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Aceitamos cartão de crédito (em até 10x), débito, PIX (com 5% de desconto) e boleto bancário. Todas as transações são processadas de forma segura.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso retirar o pedido pessoalmente?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Oferecemos a opção de retirada em nosso endereço no Shopping da Menina Feliz, Loja 23. O pedido fica pronto para retirada em até 24 horas úteis após a confirmação do pagamento.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Onde Estamos 🗺️</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Localização da Loja Física</h3>
+                    <p>Shopping da Menina Feliz, Loja 23</p>
+                    <p>Brasília - DF</p>
+                    <p>CEP: 70000-000</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn" style="margin-top: 20px;">Abrir no Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -387,13 +764,13 @@
                 <div class="footer-section">
                     <h3>Nos acompanhe</h3>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/556195045884" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/556195045884" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
-                    <p>Email: fernandandrade81@hotmail.com</p>
+                    <p>E-mail: fernandandrade81@hotmail.com</p>
                     <p>Telefone: +55 61 9504-5884</p>
                 </div>
             </div>
@@ -404,17 +781,69 @@
     </footer>
 
     <script>
-        // Adiciona classe ativa ao link do menu correspondente à página atual
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const menuLinks = document.querySelectorAll('nav a');
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainMenu = document.getElementById('mainMenu');
             
-            menuLinks.forEach(link => {
-                const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-                    link.classList.add('active');
-                }
+            if (mobileMenuBtn && mainMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainMenu.classList.toggle('show');
+                });
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const toggle = this.querySelector('.faq-toggle');
+                    
+                    // Fecha todas as outras respostas
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        if (item !== answer) {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                    document.querySelectorAll('.faq-toggle').forEach(item => {
+                        if (item !== toggle) {
+                            item.classList.remove('rotate');
+                        }
+                    });
+                    
+                    // Alterna a resposta atual
+                    answer.classList.toggle('active');
+                    toggle.classList.toggle('rotate');
+                });
             });
+
+            // Formulário de contato
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Simula o envio
+                    submitBtn.innerHTML = '<div class="loading"></div> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(function() {
+                        submitBtn.textContent = 'Mensagem Enviada!';
+                        submitBtn.style.backgroundColor = '#4CAF50';
+                        
+                        setTimeout(function() {
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.backgroundColor = '';
+                            submitBtn.disabled = false;
+                            contactForm.reset();
+                        }, 3000);
+                    }, 2000);
+                });
+            }
         });
     </script>
 </body>
