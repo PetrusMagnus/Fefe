@@ -109,24 +109,14 @@
 
         /* Hero Section */
         .hero {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ffc2dd" opacity="0.3"/><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T30,70 T10,50 T30,30" fill="%23ff9dc9" opacity="0.2"/></svg>');
-            padding: 80px 0;
+            background: linear-gradient(rgba(255, 157, 201, 0.7), rgba(255, 112, 168, 0.7)), url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
             text-align: center;
             margin-bottom: 40px;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff9dc9' opacity='0.2' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
-            opacity: 0.3;
-            z-index: 0;
         }
 
         .hero-content {
@@ -137,21 +127,23 @@
         .hero h2 {
             font-family: 'Playfair Display', serif;
             font-size: 48px;
-            color: var(--accent-color);
+            color: var(--white);
             margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 20px;
             max-width: 700px;
             margin: 0 auto 30px;
-            color: var(--text-color);
+            color: var(--white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: var(--white);
+            color: var(--primary-color);
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
@@ -164,9 +156,18 @@
         }
 
         .btn:hover {
-            background-color: #ff4d94;
+            background-color: #ffebf3;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4d94;
         }
 
         /* Products Section */
@@ -227,32 +228,22 @@
 
         .product-img {
             height: 200px;
-            background-color: #ffebf3;
+            background-color: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            position: relative;
             overflow: hidden;
         }
 
-        .product-img::after {
-            content: "Clique para adicionar imagem";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 112, 168, 0.8);
-            color: var(--white);
-            font-size: 12px;
-            padding: 5px;
-            text-align: center;
-            opacity: 0;
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
         }
 
-        .product-img:hover::after {
-            opacity: 1;
+        .product:hover .product-img img {
+            transform: scale(1.05);
         }
 
         .product-content {
@@ -268,6 +259,7 @@
         .product p {
             margin-bottom: 15px;
             color: var(--text-color);
+            font-size: 14px;
         }
 
         .product-price {
@@ -343,14 +335,15 @@
         .about-image {
             flex: 1;
             text-align: center;
-            font-size: 120px;
-            color: var(--primary-color);
-            animation: float 3s ease-in-out infinite;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Newsletter */
@@ -550,7 +543,7 @@
         <div class="container hero-content">
             <h2>Bem-vinda à Loja da Fefe! ✨</h2>
             <p>Descubra produtos encantadores e exclusivos para meninas que amam se divertir com estilo!</p>
-            <a href="produtos.html" class="btn">Explorar Produtos 💖</a>
+            <a href="produtos.html" class="btn btn-primary">Explorar Produtos 💖</a>
         </div>
     </section>
 
@@ -561,7 +554,9 @@
             <!-- Product 1 -->
             <div class="product">
                 <div class="product-badge">Novo</div>
-                <div class="product-img">👗</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vestido Encantado">
+                </div>
                 <div class="product-content">
                     <h3>Vestido Encantado</h3>
                     <p>Vestido florido perfeito para ocasiões especiais.</p>
@@ -576,7 +571,9 @@
             <!-- Product 2 -->
             <div class="product">
                 <div class="product-badge">Oferta</div>
-                <div class="product-img">🎀</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kit de Acessórios">
+                </div>
                 <div class="product-content">
                     <h3>Kit de Acessórios</h3>
                     <p>Conjunto de hair clips e tiara com detalhes brilhantes.</p>
@@ -590,7 +587,9 @@
 
             <!-- Product 3 -->
             <div class="product">
-                <div class="product-img">👜</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bolsa Estrelinha">
+                </div>
                 <div class="product-content">
                     <h3>Bolsa Estrelinha</h3>
                     <p>Bolsa prática e fashion com estampa de estrelas.</p>
@@ -605,7 +604,9 @@
             <!-- Product 4 -->
             <div class="product">
                 <div class="product-badge">Mais Vendido</div>
-                <div class="product-img">👒</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chapéu de Verão">
+                </div>
                 <div class="product-content">
                     <h3>Chapéu de Verão</h3>
                     <p>Proteja-se do sol com estilo e elegância.</p>
@@ -619,7 +620,9 @@
             
             <!-- Product 5 -->
             <div class="product">
-                <div class="product-img">👚</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1506629905607-e48b0e67d879?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Conjunto Infantil">
+                </div>
                 <div class="product-content">
                     <h3>Conjunto Infantil</h3>
                     <p>Conjunto lindo e confortável para o dia a dia.</p>
@@ -634,7 +637,9 @@
             <!-- Product 6 -->
             <div class="product">
                 <div class="product-badge">Promoção</div>
-                <div class="product-img">🎠</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kit Unicórnio">
+                </div>
                 <div class="product-content">
                     <h3>Kit Unicórnio</h3>
                     <p>Mochila, lancheira e estojo temáticos de unicórnio.</p>
@@ -648,7 +653,9 @@
             
             <!-- Product 7 -->
             <div class="product">
-                <div class="product-img">👟</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tênis Brilhante">
+                </div>
                 <div class="product-content">
                     <h3>Tênis Brilhante</h3>
                     <p>Tênis confortável com detalhes que brilham no escuro.</p>
@@ -663,7 +670,9 @@
             <!-- Product 8 -->
             <div class="product">
                 <div class="product-badge">Novo</div>
-                <div class="product-img">🧦</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1586352451265-16b4b3e0bad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Meias Decoradas">
+                </div>
                 <div class="product-content">
                     <h3>Meias Decoradas</h3>
                     <p>Conjunto de meias com renda e aplicações fofas.</p>
@@ -685,10 +694,10 @@
                     <h2>Sobre a Fefe 🦄</h2>
                     <p>Fernanda Andrade, carinhosamente conhecida como Fefe, sempre amou moda e tudo que é fofo e feminino. Sua loja nasceu do desejo de oferecer produtos de qualidade com um toque especial de encanto.</p>
                     <p>Cada item é cuidadosamente selecionado para garantir que você se sinta especial e confiante. Na Loja da Fefe, não vendemos apenas produtos, vendemos experiências e momentos de felicidade!</p>
-                    <a href="sobre.html" class="btn">Conheça Nossa História 📖</a>
+                    <a href="sobre.html" class="btn btn-primary">Conheça Nossa História 📖</a>
                 </div>
                 <div class="about-image">
-                    🌸
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda9bc9e65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sobre a Loja da Fefe">
                 </div>
             </div>
         </div>
