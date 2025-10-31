@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra nossos produtos encantadores na Loja da Fefe - Roupas, acessórios e muito mais!">
     <title>Produtos | Loja da Fefe</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset e configurações gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #ff70a8;
+            --secondary-color: #ff9dc9;
+            --accent-color: #d44d80;
+            --text-color: #8a3a6a;
+            --light-bg: #fff5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #fff5f5;
-            color: #8a3a6a;
+            background-color: var(--light-bg);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
@@ -28,9 +41,12 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #ff9dc9, #ff70a8);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
@@ -42,12 +58,13 @@
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
         .logo h1 {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
-            color: white;
+            color: var(--white);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -66,11 +83,11 @@
         }
 
         nav ul li a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: var(--transition);
             padding: 5px 10px;
             border-radius: 15px;
         }
@@ -81,13 +98,22 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         /* Page Title */
         .page-title {
             text-align: center;
             margin: 40px 0;
             font-family: 'Playfair Display', serif;
             font-size: 36px;
-            color: #d44d80;
+            color: var(--accent-color);
             position: relative;
         }
 
@@ -96,7 +122,7 @@
             display: block;
             width: 100px;
             height: 4px;
-            background: linear-gradient(to right, #ff9dc9, #ff70a8);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
             margin: 15px auto;
             border-radius: 2px;
         }
@@ -111,19 +137,19 @@
         }
 
         .category-btn {
-            background-color: white;
-            border: 2px solid #ff9dc9;
-            color: #d44d80;
+            background-color: var(--white);
+            border: 2px solid var(--secondary-color);
+            color: var(--accent-color);
             padding: 10px 20px;
             border-radius: 25px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .category-btn.active, .category-btn:hover {
-            background-color: #ff9dc9;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--white);
         }
 
         /* Products Grid */
@@ -135,11 +161,12 @@
         }
 
         .product {
-            background-color: white;
+            background-color: var(--white);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
         .product:hover {
@@ -150,8 +177,8 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: #ff70a8;
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 12px;
@@ -161,12 +188,22 @@
 
         .product-img {
             height: 200px;
-            background-color: #ffebf3;
+            background-color: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product:hover .product-img img {
+            transform: scale(1.05);
         }
 
         .product-content {
@@ -176,18 +213,19 @@
         .product h3 {
             font-size: 22px;
             margin-bottom: 10px;
-            color: #d44d80;
+            color: var(--accent-color);
         }
 
         .product p {
             margin-bottom: 15px;
-            color: #8a3a6a;
+            color: var(--text-color);
+            font-size: 14px;
         }
 
         .product-price {
             font-weight: 600;
             font-size: 20px;
-            color: #ff70a8;
+            color: var(--primary-color);
         }
 
         .product-actions {
@@ -197,23 +235,198 @@
         }
 
         .product-actions button {
-            background-color: #ff9dc9;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--white);
             border: none;
             padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: var(--transition);
+            font-size: 14px;
         }
 
         .product-actions button:hover {
-            background-color: #ff70a8;
+            background-color: var(--primary-color);
+        }
+
+        /* Product Quick View Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-product {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .modal-product-img {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-product-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .modal-product-price {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-product-description {
+            margin-bottom: 20px;
+        }
+
+        .modal-product-details {
+            margin-bottom: 20px;
+        }
+
+        .modal-product-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-product-details li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .modal-product-details li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-buy {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-buy:hover {
+            background-color: #ff4d94;
+        }
+
+        .btn-cart {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-cart:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, #ffc2dd, var(--secondary-color));
+            padding: 40px 0;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+
+        .newsletter h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .newsletter-form button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #ff4d94;
         }
 
         /* Footer */
         footer {
-            background-color: #ff9dc9;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--white);
             padding: 40px 0;
             text-align: center;
             margin-top: 60px;
@@ -238,10 +451,10 @@
         }
 
         .social-icons a {
-            color: white;
+            color: var(--white);
             font-size: 24px;
             margin: 0 10px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .social-icons a:hover {
@@ -253,6 +466,21 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Responsividade */
@@ -271,6 +499,44 @@
             nav ul li {
                 margin: 5px 10px;
             }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .modal-product {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -278,12 +544,15 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <span>🌸</span>
                 <h1>Loja da Fefe</h1>
-            </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <ul>
+                <ul id="mainMenu">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="produtos.html" class="active">Produtos</a></li>
                     <li><a href="sobre.html">Sobre</a></li>
@@ -299,131 +568,158 @@
         
         <!-- Categories -->
         <div class="categories">
-            <button class="category-btn active">Tudo 🌸</button>
-            <button class="category-btn">Roupas 👗</button>
-            <button class="category-btn">Acessórios 🎀</button>
-            <button class="category-btn">Calçados 👟</button>
-            <button class="category-btn">Bonecas 🧸</button>
+            <button class="category-btn active" data-category="all">Tudo 🌸</button>
+            <button class="category-btn" data-category="clothing">Roupas 👗</button>
+            <button class="category-btn" data-category="accessories">Acessórios 🎀</button>
+            <button class="category-btn" data-category="shoes">Calçados 👟</button>
+            <button class="category-btn" data-category="toys">Brinquedos 🧸</button>
         </div>
         
         <!-- Products Grid -->
-        <div class="products">
+        <div class="products" id="productsContainer">
             <!-- Product 1 -->
-            <div class="product">
+            <div class="product" data-category="clothing">
                 <div class="product-badge">Novo</div>
-                <div class="product-img">👗</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vestido Encantado">
+                </div>
                 <div class="product-content">
                     <h3>Vestido Encantado</h3>
                     <p>Vestido florido perfeito para ocasiões especiais.</p>
                     <span class="product-price">R$ 129,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="1">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product">
+            <div class="product" data-category="accessories">
                 <div class="product-badge">Oferta</div>
-                <div class="product-img">🎀</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kit de Acessórios">
+                </div>
                 <div class="product-content">
                     <h3>Kit de Acessórios</h3>
                     <p>Conjunto de hair clips e tiara com detalhes brilhantes.</p>
                     <span class="product-price">R$ 49,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="2">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
-            <div class="product">
-                <div class="product-img">👜</div>
+            <div class="product" data-category="accessories">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Bolsa Estrelinha">
+                </div>
                 <div class="product-content">
                     <h3>Bolsa Estrelinha</h3>
                     <p>Bolsa prática e fashion com estampa de estrelas.</p>
                     <span class="product-price">R$ 89,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="3">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 4 -->
-            <div class="product">
+            <div class="product" data-category="accessories">
                 <div class="product-badge">Mais Vendido</div>
-                <div class="product-img">👒</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chapéu de Verão">
+                </div>
                 <div class="product-content">
                     <h3>Chapéu de Verão</h3>
                     <p>Proteja-se do sol com estilo e elegância.</p>
                     <span class="product-price">R$ 59,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="4">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 5 -->
-            <div class="product">
-                <div class="product-img">👚</div>
+            <div class="product" data-category="clothing">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1506629905607-e48b0e67d879?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Conjunto Infantil">
+                </div>
                 <div class="product-content">
                     <h3>Conjunto Infantil</h3>
                     <p>Conjunto lindo e confortável para o dia a dia.</p>
                     <span class="product-price">R$ 99,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="5">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 6 -->
-            <div class="product">
+            <div class="product" data-category="toys">
                 <div class="product-badge">Promoção</div>
-                <div class="product-img">🎠</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kit Unicórnio">
+                </div>
                 <div class="product-content">
                     <h3>Kit Unicórnio</h3>
                     <p>Mochila, lancheira e estojo temáticos de unicórnio.</p>
                     <span class="product-price">R$ 149,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="6">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 7 -->
-            <div class="product">
-                <div class="product-img">👟</div>
+            <div class="product" data-category="shoes">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tênis Brilhante">
+                </div>
                 <div class="product-content">
                     <h3>Tênis Brilhante</h3>
-                    <p>Tênis comfortable com detalhes que brilham no escuro.</p>
+                    <p>Tênis confortável com detalhes que brilham no escuro.</p>
                     <span class="product-price">R$ 119,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="7">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 8 -->
-            <div class="product">
+            <div class="product" data-category="clothing">
                 <div class="product-badge">Novo</div>
-                <div class="product-img">🧦</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1586352451265-16b4b3e0bad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Meias Decoradas">
+                </div>
                 <div class="product-content">
                     <h3>Meias Decoradas</h3>
                     <p>Conjunto de meias com renda e aplicações fofas.</p>
                     <span class="product-price">R$ 29,90</span>
                     <div class="product-actions">
-                        <button>Detalhes</button>
-                        <button>Comprar</button>
+                        <button class="btn-details" data-product="8">Detalhes</button>
+                        <button class="btn-cart">Comprar</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h3>Inscreva-se para novidades ✨</h3>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Inscrever</button>
+            </form>
         </div>
     </div>
 
@@ -438,13 +734,13 @@
                 <div class="footer-section">
                     <h3>Nos acompanhe</h3>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/556195045884" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/fernanda_andrade81?igsh=MW50eWtncXNnY3h6eQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/556195045884" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
-                    <p>Email: fernandandrade81@hotmail.com</p>
+                    <p>E-mail: fernandandrade81@hotmail.com</p>
                     <p>Telefone: +55 61 9504-5884</p>
                 </div>
             </div>
@@ -454,26 +750,250 @@
         </div>
     </footer>
 
-    <script>
-        // Script para filtro de categorias
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelector('.category-btn.active').classList.remove('active');
-                this.classList.add('active');
-                // Aqui iria a lógica para filtrar os produtos
-            });
-        });
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-product" id="modalProductContent">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
 
-        // Adiciona classe ativa ao link do menu correspondente à página atual
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const menuLinks = document.querySelectorAll('nav a');
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainMenu = document.getElementById('mainMenu');
             
-            menuLinks.forEach(link => {
-                const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-                    link.classList.add('active');
+            if (mobileMenuBtn && mainMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainMenu.classList.toggle('show');
+                });
+            }
+
+            // Filtro de categorias
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const products = document.querySelectorAll('.product');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove a classe active de todos os botões
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Adiciona a classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filtra os produtos
+                    products.forEach(product => {
+                        if (category === 'all' || product.getAttribute('data-category') === category) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Modal de produto
+            const modal = document.getElementById('productModal');
+            const closeModal = document.getElementById('closeModal');
+            const modalContent = document.getElementById('modalProductContent');
+            const detailButtons = document.querySelectorAll('.btn-details');
+            
+            // Dados dos produtos para o modal
+            const productData = {
+                1: {
+                    name: "Vestido Encantado",
+                    price: "R$ 129,90",
+                    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Vestido florido perfeito para ocasiões especiais. Feito com tecido de alta qualidade e detalhes delicados que encantam.",
+                    details: [
+                        "Tecido: 100% algodão",
+                        "Disponível em tamanhos: 2 a 12 anos",
+                        "Cores disponíveis: Rosa, Azul, Lilás",
+                        "Lavagem à mão recomendada"
+                    ]
+                },
+                2: {
+                    name: "Kit de Acessórios",
+                    price: "R$ 49,90",
+                    image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Conjunto completo de hair clips e tiara com detalhes brilhantes que deixam qualquer look mais especial.",
+                    details: [
+                        "Material: Plástico e metal",
+                        "Inclui: 5 hair clips + 1 tiara",
+                        "Cores: Rosa, Dourado, Prateado",
+                        "Embalagem presenteável"
+                    ]
+                },
+                3: {
+                    name: "Bolsa Estrelinha",
+                    price: "R$ 89,90",
+                    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Bolsa prática e fashion com estampa de estrelas. Perfeita para levar os itens essenciais com muito estilo.",
+                    details: [
+                        "Material: Poliéster",
+                        "Compartimentos: 1 principal + bolso interno",
+                        "Alça ajustável",
+                        "Dimensões: 20x15x8 cm"
+                    ]
+                },
+                4: {
+                    name: "Chapéu de Verão",
+                    price: "R$ 59,90",
+                    image: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Proteja-se do sol com estilo e elegância. Chapéu leve e arejado, ideal para dias ensolarados.",
+                    details: [
+                        "Material: Palha sintética",
+                        "Aba: 7 cm",
+                        "Cores: Bege, Branco, Rosa",
+                        "Ajustável com fita interna"
+                    ]
+                },
+                5: {
+                    name: "Conjunto Infantil",
+                    price: "R$ 99,90",
+                    image: "https://images.unsplash.com/photo-1506629905607-e48b0e67d879?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Conjunto lindo e confortável para o dia a dia. Perfeito para brincar e se divertir com estilo.",
+                    details: [
+                        "Conteúdo: Camiseta + short saia",
+                        "Tecido: 95% algodão, 5% elastano",
+                        "Tamanhos: 2 a 10 anos",
+                        "Estampas variadas"
+                    ]
+                },
+                6: {
+                    name: "Kit Unicórnio",
+                    price: "R$ 149,90",
+                    image: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Kit completo temático de unicórnio com mochila, lancheira e estojo. Ideal para escola e passeios.",
+                    details: [
+                        "Conteúdo: Mochila + lancheira + estojo",
+                        "Material: Poliéster impermeável",
+                        "Dimensões mochila: 30x40x15 cm",
+                        "Design exclusivo"
+                    ]
+                },
+                7: {
+                    name: "Tênis Brilhante",
+                    price: "R$ 119,90",
+                    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Tênis confortável com detalhes que brilham no escuro. Perfeito para crianças ativas e cheias de energia.",
+                    details: [
+                        "Material: Couro sintético",
+                        "Sola: Antiderrapante",
+                        "Números: 25 a 33",
+                        "Cores: Rosa, Azul, Roxo"
+                    ]
+                },
+                8: {
+                    name: "Meias Decoradas",
+                    price: "R$ 29,90",
+                    image: "https://images.unsplash.com/photo-1586352451265-16b4b3e0bad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "Conjunto de meias com renda e aplicações fofas. Conforto e estilo para os pés das pequenas.",
+                    details: [
+                        "Conteúdo: 3 pares de meias",
+                        "Material: 80% algodão, 15% poliamida, 5% elastano",
+                        "Tamanhos: 25/28, 29/32, 33/36",
+                        "Designs variados"
+                    ]
                 }
+            };
+
+            // Abrir modal com detalhes do produto
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product');
+                    const product = productData[productId];
+                    
+                    if (product) {
+                        modalContent.innerHTML = `
+                            <div class="modal-product-img">
+                                <img src="${product.image}" alt="${product.name}">
+                            </div>
+                            <div class="modal-product-info">
+                                <h3>${product.name}</h3>
+                                <div class="modal-product-price">${product.price}</div>
+                                <div class="modal-product-description">
+                                    <p>${product.description}</p>
+                                </div>
+                                <div class="modal-product-details">
+                                    <h4>Detalhes do Produto:</h4>
+                                    <ul>
+                                        ${product.details.map(detail => `<li>${detail}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="modal-actions">
+                                    <button class="btn-buy">Comprar Agora</button>
+                                    <button class="btn-cart">Adicionar ao Carrinho</button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Fechar modal clicando fora
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Simula o envio
+                    submitBtn.innerHTML = '<div class="loading"></div>';
+                    
+                    setTimeout(function() {
+                        submitBtn.textContent = 'Inscrito!';
+                        submitBtn.style.backgroundColor = '#4CAF50';
+                        
+                        setTimeout(function() {
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.backgroundColor = '';
+                            newsletterForm.reset();
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+
+            // Botões de compra
+            const buyButtons = document.querySelectorAll('.btn-cart');
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product');
+                    const productName = product.querySelector('h3').textContent;
+                    const productPrice = product.querySelector('.product-price').textContent;
+                    
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = 'Adicionado!';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 1500);
+                    
+                    console.log(`Produto adicionado: ${productName} - ${productPrice}`);
+                });
             });
         });
     </script>
